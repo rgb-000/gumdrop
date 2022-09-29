@@ -1,21 +1,64 @@
-
+@import (css) url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
 * {
-  font-family: 'Roboto Mono';
+  font-family: 'Roboto Mono', monospace !important;
+}
+html {
+ background-color: rgb(32, 39, 32) !important;
 }
 
-p {
+#amount-text-field {
+  font-size: 24px !important;
+  }
+
+  p, body {
   margin: 0;
+  color: rgb(114, 182, 207);
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+
+  /* Safari seems to support, but seems deprecated and does the same thing as the others. */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.ant-layout  {  
+  background-image: url('https://arweave.net/k0cc4r6ORtOifhlqcCNL3nCdU3QAP-wS4QwiuogQ0rg');
+  background-position: center;
+  background-size: 2000px 1132px;
+}
+
+.banner::after {
+  content:url('https://ipfs.io/ipfs/QmeYsk66sqtNGnZYpQYnYPsnSmKrQF8WcRG1Md4ZrB65YH?filetype=gif');
+  position: fixed;
+  display: block;
+  width:100vw;
+  left:0;
+  text-align: center;
+  justify-content: center;
+}​
+
+
+.banner img {
+  max-height: 30px !important;
+}
+.app-logo {
+@media (max-width: 768px) {
+  display:none;}
 }
 .pixel {
   max-width:20px;
 }
+button, .connector, .connector span, .actions-buttons {
+  font-family: "Roboto Mono", monospace !important;
+}
+b {font-weight: 800 !important;}
 
 input[type='text'], input[type='password'], input[type='number'] {
   font-size:12px !important;
   height:20px;
 }
 .MuiButton-root {
-  height:40px;
+  height:72px;
   border-radius:6px;
 }
 .ant-collapse {
@@ -29,20 +72,84 @@ max-height:160px;
 mix-blend-mode: lighten;
 }
 .URLS {
+  display: inline-table;
+  text-align: center;
+  position: fixed;
+  height: 30px;
+  width: 360px;
+  left: calc(50vw - 180px);
+ 
+}
+.URLS a{
   background-color: #fbb954;
   font-weight: 600;
-  display: block;
   color:  rgb(32, 39, 32) !important;
-  border-radius: 6px;
   text-align: center;
-  line-height: 40px;
-  position: fixed;
+  display: inline-table;
+  border-radius: 6px;
   width: 360px;
-  max-height: 40px !important;
-  left: calc(50vw - 180px);
+  height: 30px;
+   
 }
-.URLS a {
+.actions {
+  overflow: visible;
+}
+
+.URLSM {
+  display: block;
+  width:80vw;
+  text-align: center;
+  height: 60px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 60px;
+  margin:30px 0px 30px 0px;
+  width: 480px;
+ 
+}
+.URLSM a{
+  background-color: #fbb954;
+  font-weight: 600;
   color:  rgb(32, 39, 32) !important;
+  text-align: center;
+  display: inline-table;
+  border-radius: 6px;
+  width: 480px;
+  height:60px;
+   
+}
+
+.URLSM:empty:not(:focus):before {
+  background-color: #1e4463;
+    border-radius: 4px;
+    border: 0px;
+    color: rgb(114, 182, 207);
+    cursor: not-allowed;
+    justify-content: center;
+    content: attr(data-text);
+    text-align: center;
+    display: inline-flex;
+    width: 480px;
+    flex-direction: column;
+  }
+
+.URLS:empty:not(:focus):before {
+background-color: #1e4463;
+  border-radius: 4px;
+  border: 0px;
+  width: 360px;
+  color: rgb(114, 182, 207);
+  cursor: not-allowed;
+  justify-content: center;
+  content: attr(data-text);
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+}
+.URLS a:hover, .URLSM a:hover  {
+  background-color: #dba14a;
+  transition: all 250ms;
+
 }
 .ant-btn {
   height: 56px;
@@ -112,227 +219,6 @@ mix-blend-mode: lighten;
   }
 }
 
-.modal-box {
-  position: relative;
-  box-sizing: border-box;
-  border-radius: 12px;
-  background-color: #2A2A2A;
-  cursor: auto;
-  padding-bottom: 0px;
-  .ant-modal-footer {
-    border-top: 0;
-  }
-  .ant-input {
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-
-  @media (max-width: 768px) {
-    width: 100% !important;
-    top:0 !important;
-    max-width: 100% !important;
-    .ant-modal-content{
-      min-height: 100vh;
-    }
-    .mobile-menu-modal{
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 80vh;
-      .actions{
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        flex-wrap: wrap;
-        .actions-buttons{
-          display: flex;
-          width: 100%;
-          button{
-            flex: auto;
-          }
-        }
-        .actions-user{
-          margin-top: 10px;
-
-          a{
-            display: flex;
-            flex: 1;
-            padding: 5px;
-          }
-        }
-        .ant-badge{
-          margin-top: 25px;
-        }
-      }
-      .ant-dropdown-menu{
-        background-color: transparent !important;
-      }
-      .app-btn{
-        background-color: transparent !important;
-      }
-      .ant-menu{
-        width: 100%;
-        background-color: transparent !important;
-        border-right: 0 !important;
-        .ant-menu-item{
-          border-bottom: 1px solid rgb(114, 182, 207) !important;
-          padding: 0;
-          .app-btn{
-            font-size: 18px;
-            font-weight: 600;
-            padding: 0 0 24px;
-          }
-        }
-      }
-      .current-user-mobile-badge{
-        width: 100%;
-        .mobile-badge{
-          display: flex;
-        }
-        .balance-container{
-          width: 100%;
-          margin-top: 10px;
-          border-radius: 12px;
-          margin-bottom: 10px;
-          height: 50px;
-          display: flex;
-          font-weight: 700;
-          flex-direction: column;
-          .balance-title{
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 14px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-          }
-          .sol-img-wrapper{
-            border-radius: 50%;
-            background: black;
-            display: inline-block;
-            padding: 1px 4px 4px 4px;
-            line-height: 1;
-          }
-        }
-      }
-    }
-  }
-
-  .ant-modal-content {
-    background: @table-bg-color;
-    border-radius: 12px;
-  }
-
-  .ant-modal-header {
-    border-bottom: 0;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding: 28px 24px 28px 24px;
-    background-color: transparent !important;
-    color: rgb(114, 182, 207) !important;
-    .ant-modal-title {
-      color: rgb(114, 182, 207);
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 24px;
-    }
-  }
-
-  .ant-modal-close-x {
-
-    width: fit-content;
-    height: fit-content;
-    margin-right: 24px;
-    margin-top: 8px;
-  }
-
-  .ant-modal-body {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px;
-    padding: 48px;
-    @media (max-width: 768px) {
-      padding: 30px;
-      min-height: 90vh !important;
-    }
-    .ant-card {
-      background: transparent;
-      border: 0;
-      height: 476px;
-      .ant-card-cover {
-        border-radius: 12px;
-        .card-cover {
-          //background: rgba(255, 255, 255, 0.1);
-          height: 200px;
-          border-radius: 12px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          img {
-            width: auto;
-            height: 100%;
-            border-radius: 12px;
-          }
-        }
-      }
-
-      .body-title {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 20px;
-        margin-top: 20px;
-        margin-bottom: 12px;
-        color: rgb(114, 182, 207);
-      }
-
-      .body-content {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 20px;
-        color: rgb(114, 182, 207)
-      }
-
-      .ant-card-body {
-        display: flex;
-        flex-direction: column;
-
-        > :last-child {
-          &.line {
-            width: 100%;
-          }
-          position: absolute;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          bottom: 0;
-          position: absolute;
-          right: 0;
-        }
-
-        .button-container {
-          display: flex;
-          justify-content: flex-end;
-
-          .modal-button-buy {
-            position: absolute;
-            margin-top: 40px;
-            height: 48px;
-            width: 156px;
-            right: 0;
-            bottom: 8px;
-            background: #B388F5;
-            box-shadow: 0px 0px 24px rgba(26, 26, 26, 0.12);
-            border-radius: 8px;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 16px
-          }
-        }
-      }
-    }
-  }
-}
-
 .connector {
   color: #121212;
   border-color: #121212;
@@ -350,209 +236,5 @@ mix-blend-mode: lighten;
     background: transparent !important;
     border-color: @primary-color;
     color: @primary-color;
-  }
-}
-
-.stack > * {
-  margin-bottom: 30px;
-}
-
-#transfer-options-collapse {
-  .ant-collapse-header {
-    padding-top: 0;
-    padding-bottom: 20px;
-  }
-  .ant-collapse-item-active .ant-collapse-header {
-    padding-bottom: 20px;
-  }
-}
-
-.action-field {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-
-  .field-title {
-    text-align: left;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    color: rgba(255, 255, 255, 0.7);
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    margin-bottom: 8px;
-  }
-
-  .field-info {
-    text-align: left;
-
-    color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 12px;
-  }
-
-  margin-bottom: 20px;
-}
-
-.arweave-upload {
-  // lol
-  .ant-table {
-    background: @bg-color;
-  }
-  .ant-table-container table {
-    > thead {
-      > tr:first-child th:first-child {
-        border-top-left-radius: 10px;
-      }
-      > tr:first-child th:last-child {
-        border-top-right-radius: 10px;
-      }
-    }
-
-    > tbody {
-      > tr:last-child td:first-child {
-        border-bottom-left-radius: 10px;
-      }
-      > tr:last-child td:last-child {
-        border-bottom-right-radius: 10px;
-      }
-    }
-  }
-
-  .ant-table-thead > tr > th {
-    background: @table-bg-color;
-  }
-
-  .ant-table-tbody > tr > td {
-    background: @table-bg-color;
-  }
-
-  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
-    // background: #6B6E70;
-    background: @table-bg-color;
-
-    .anticon {
-      color: @primary-color;
-    }
-  }
-
-
-  .anticon {
-    color:  rgb(114, 182, 207);
-  }
-
-  > textarea {
-    resize: none,
-  }
-
-  .ant-input {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-
-    border-color: rgba(255, 255, 255, 0.2);
-    border-top-width: 0px !important;
-    border-left-width: 0px !important;
-    border-right-width: 0px !important;
-    border-bottom-width: 1px !important;
-  }
-
-  .ant-input:focus, input:focus {
-    border-color: @primary-color;
-
-    border-top-width: 0px !important;
-    border-left-width: 0px !important;
-    border-right-width: 0px !important;
-    border-bottom-width: 2px !important;
-
-    outline: none;
-    box-shadow: none;
-  }
-
-  .ant-form-item-control .ant-form-item-control-input .ant-form-item-control-input-content {
-    .ant-input:focus.no-outline-on-error {
-      border-top-width: 0px !important;
-      border-left-width: 0px !important;
-      border-right-width: 0px !important;
-      border-bottom-width: 2px !important;
-
-      outline: none;
-      box-shadow: none;
-    }
-  }
-
-  #fund-bundlr {
-    display: inline;
-    width: inherit;
-    padding-top: 0;
-    padding-bottom: 0;
-    height: 22px;
-    border: none;
-    background-color: @table-bg-color !important;
-    border-radius: 48px;
-    color: @primary-color;
-    margin-left: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-.modal-input-field {
-  width: 100%;
-  background: #242424;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  justify-content: space-between;
-}
-
-.fullAspectRatio > img {
-  object-fit: cover;
-  aspect-ratio: 1 / 1,
-}
-
-.arweave-upload {
-  .ant-upload {
-    width: 100%;
-  }
-  .ant-btn {
-    width: 100%;
-    border-radius: 10px;
-  }
-  .ant-upload-list-item {
-    border-radius: 10px;
-  }
-
-  .ant-input-lg {
-    font-size: 14px;
-  }
-}
-
-.fund-modal-btn.ant-btn {
-  width: 100%;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: @grey-30;
-}
-
-.fund-modal-btn.ant-btn:hover {
-  border-color: inherit;
-}
-
-#additional-parameters {
-  .ant-collapse {
-    > .ant-collapse-item > .ant-collapse-header {
-      padding: 8px 0px 8px;
-    }
-    > .ant-collapse-item-active > .ant-collapse-header {
-      padding: 8px 0px 20px;
-    }
   }
 }

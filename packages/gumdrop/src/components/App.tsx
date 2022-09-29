@@ -32,11 +32,11 @@ export const App = () => {
               <LoaderProvider>
                 <WalletProvider>
                   <AppLayout>
-                    <div></div>
                     <Switch>
                       <Route exact path="/claim" component={Claim} />
                       <Route exact path="/" component={About} />
                     </Switch>
+                    <div className="banner"></div>
                   </AppLayout>
                 </WalletProvider>
               </LoaderProvider>

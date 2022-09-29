@@ -87,7 +87,7 @@ export const Settings = ({
                 style={{
                   fontWeight: 600,
                   letterSpacing: '-0.02em',
-                  color: '#FFFFFF',
+                  color: '#fbb954',
                 }}
                 onClick={() =>
                   navigator.clipboard.writeText(publicKey?.toBase58() || '')
@@ -102,7 +102,7 @@ export const Settings = ({
         <br />
         <span
           style={{
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            borderBottom: '1px solid #fbb954',
             width: 'calc(100% + 32px)',
             marginTop: 10,
             marginBottom: 10,
@@ -153,11 +153,96 @@ export const CurrentUserBadge = (props: {
   const address = publicKey?.toBase58();
 
   return (
-    <div className="wallet-wrapper">
-      <div
-        className="URLS"
-        data-text=":( There's no claim available for this address. Check if you are using an eligible wallet for the current Gumdrop."
-      >
+    <>
+      <div className="wallet-wrapper">
+        {props.showBalance && (
+          <span>
+            {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)}{' '}
+            SOL
+          </span>
+        )}
+
+        <Popover
+          trigger="click"
+          placement="bottomRight"
+          content={
+            <Settings
+              additionalSettings={
+                <div
+                  style={{
+                    width: 250,
+                    paddingLeft: '10px',
+                  }}
+                >
+                  <h5
+                    style={{
+                      color: '#fbb954',
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    BALANCE
+                  </h5>
+                  <div
+                    style={{
+                      marginBottom: 10,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontWeight: 600,
+                        color: '#fbb954',
+                      }}
+                    >
+                      {formatNumber.format(balance)} SOL
+                    </span>
+                    &nbsp;
+                    <span
+                      style={{
+                        color: '#fbb954',
+                      }}
+                    >
+                      {formatUSD.format(balanceInUSD)}
+                    </span>
+                    &nbsp;
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      marginBottom: 10,
+                    }}
+                  >
+                    <Button
+                      className="metaplex-button-default"
+                      onClick={disconnect}
+                      style={{
+                        ...btnStyle,
+                        paddingLeft: 0,
+                      }}
+                    >
+                      Disconnect
+                    </Button>
+                  </div>
+                </div>
+              }
+            />
+          }
+        >
+          <Button className="wallet-key">
+            {image}
+            {name && (
+              <span
+                style={{
+                  marginLeft: '0.5rem',
+                  fontWeight: 600,
+                }}
+              >
+                {name}
+              </span>
+            )}
+          </Button>
+        </Popover>
+      </div>
+      <div className="URLS" data-text=":( This address has no claim available.">
         {data
           .filter(item => item.handle === address)
           .map(filtered => (
@@ -166,93 +251,7 @@ export const CurrentUserBadge = (props: {
             </a>
           ))}
       </div>
-
-      {props.showBalance && (
-        <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)} SOL
-        </span>
-      )}
-
-      <Popover
-        trigger="click"
-        placement="bottomRight"
-        content={
-          <Settings
-            additionalSettings={
-              <div
-                style={{
-                  width: 250,
-                  paddingLeft: '10px',
-                }}
-              >
-                <h5
-                  style={{
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  BALANCE
-                </h5>
-                <div
-                  style={{
-                    marginBottom: 10,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontWeight: 600,
-                      color: '#FFFFFF',
-                    }}
-                  >
-                    {formatNumber.format(balance)} SOL
-                  </span>
-                  &nbsp;
-                  <span
-                    style={{
-                      color: 'rgba(255, 255, 255, 0.5)',
-                    }}
-                  >
-                    {formatUSD.format(balanceInUSD)}
-                  </span>
-                  &nbsp;
-                </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    marginBottom: 10,
-                  }}
-                >
-                  <Button
-                    className="metaplex-button-default"
-                    onClick={disconnect}
-                    style={{
-                      ...btnStyle,
-                      paddingLeft: 0,
-                    }}
-                  >
-                    Disconnect
-                  </Button>
-                </div>
-              </div>
-            }
-          />
-        }
-      >
-        <Button className="wallet-key">
-          {image}
-          {name && (
-            <span
-              style={{
-                marginLeft: '0.5rem',
-                fontWeight: 600,
-              }}
-            >
-              {name}
-            </span>
-          )}
-        </Button>
-      </Popover>
-    </div>
+    </>
   );
 };
 
@@ -275,7 +274,7 @@ export const Cog = () => {
           >
             <h5
               style={{
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: '#fbb954',
                 letterSpacing: '0.02em',
               }}
             >
@@ -298,7 +297,7 @@ export const Cog = () => {
               value={endpoint.name}
               bordered={false}
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: '#fbb954',
                 borderRadius: 8,
                 width: '100%',
                 marginBottom: 10,
@@ -336,20 +335,10 @@ export const CurrentUserBadgeMobile = (props: {
   closeModal?: any;
 }) => {
   const { wallet, publicKey, disconnect } = useWallet();
-  const { account } = useNativeAccount();
-  const solPrice = useSolPrice();
 
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
-  const balanceInUSD = balance * solPrice;
-
-  const iconStyle: React.CSSProperties = {
-    display: 'flex',
-    width: props.iconSize,
-    borderRadius: 50,
-  };
 
   let name = props.showAddress ? shortenAddress(`${publicKey}`) : '';
   const unknownWallet = wallet as any;
@@ -357,47 +346,41 @@ export const CurrentUserBadgeMobile = (props: {
     name = unknownWallet.name;
   }
 
-  let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
-
-  if (unknownWallet.image) {
-    image = <img src={unknownWallet.image} style={iconStyle} />;
-  }
+  const address = publicKey?.toBase58();
 
   return (
-    <div className="current-user-mobile-badge">
-      <div className="mobile-badge">
-        {image}
-        {name && (
-          <span
-            style={{
-              marginLeft: '0.5rem',
-              fontWeight: 600,
-            }}
-          >
-            {name}
-          </span>
-        )}
+    <>
+      <div className="current-user-mobile-badge">
+        <div className="mobile-badge">
+          {name && (
+            <span
+              style={{
+                marginLeft: '0.5rem',
+                fontWeight: 600,
+              }}
+            >
+              {name}
+            </span>
+          )}
+        </div>
+        <div
+          className="URLSM"
+          data-text=":( This address has no claim available."
+        >
+          {data
+            .filter(item => item.handle === address)
+            .map(filtered => (
+              <a className="claim" href={filtered.url} key={filtered.handle}>
+                POPULATE THE CLAIM
+              </a>
+            ))}
+        </div>
+        <div className="actions-buttons">
+          <Button className="black-btn" onClick={disconnect}>
+            Disconnect
+          </Button>
+        </div>
       </div>
-      <div className="balance-container">
-        <span className="balance-title">Balance</span>
-        <span>
-          {formatNumber.format(balance)}&nbsp;&nbsp; SOL{' '}
-          <span
-            style={{
-              marginLeft: 5,
-              fontWeight: 'normal',
-              color: 'rgba(255, 255, 255, 0.5)',
-            }}
-          >
-            {formatUSD.format(balanceInUSD)}
-          </span>
-        </span>
-      </div>
-      <div className="actions-buttons">
-        <Button className="black-btn" onClick={disconnect}>
-          Disconnect
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };

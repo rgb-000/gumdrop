@@ -1418,7 +1418,7 @@ export const Claim = (props: RouteComponentProps<ClaimProps>) => {
             wrap();
           }}
         >
-          {asyncNeedsTemporalSigner ? 'Next' : 'Claim Gumdrop'}
+          {asyncNeedsTemporalSigner ? 'Next' : 'Claim your Pixels'}
         </Button>
         {loading && loadingProgress()}
       </Box>

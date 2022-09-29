@@ -14,9 +14,16 @@ export const About = () => {
   const summary = (
     <Stack spacing={1}>
       <div>
-        ⚠️ Last balance update happened on <b>{time} UTC</b>. You can do the
-        claim only once until the next update, which happens every monday, and
-        the unclaimed balance acummulates from week to week.
+        The $Pixels claim was built with Gumdrop, a Metaplex&rsquo;s program
+        that enables airdrops by allowing users to redeem their balance.
+        <div>
+          <br></br>
+          <br></br>
+        </div>{' '}
+        ⚠️ Last balance update for Critters Cult and Sunsets collectors happened
+        on {time} UTC. You can do the claim only once until the next update,
+        which happens every monday, and the unclaimed balance accrues from week
+        to week.
       </div>
     </Stack>
   );

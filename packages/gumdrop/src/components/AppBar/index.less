@@ -12,15 +12,21 @@ header.ant-layout-header.App-Bar {
   width: 100%;
   background: transparent;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   height: fit-content;
   z-index: 10;
 
   @media (max-width: @mobile-xs-max) {
-    max-height: 64px;
+    max-height: 48px;
     position: sticky;
     //background: @black-100;
   }
+}
+
+.app-right {
+  font-family: "Roboto Mono", monospace !important;
+  font-weight: 600 !important;
 }
 
 .title {
@@ -32,7 +38,7 @@ header.ant-layout-header.App-Bar {
   align-items: center;
   text-align: center;
 
-  color: #ffffff;
+  color: green;
   padding: 10px 14px 10px 6px;
 
   margin-bottom: 0px;
@@ -88,7 +94,7 @@ header.ant-layout-header.App-Bar {
   align-items: center;
   justify-content: space-between;
   @media (min-width: 769px) {
-    display: none;
+  display: none;
   }
   @media (max-width: 768px) {
     padding: 16px 0px;
