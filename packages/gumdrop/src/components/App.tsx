@@ -2,16 +2,14 @@ import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { CoingeckoProvider } from '../contexts/coingecko';
 import { ConnectionProvider } from '../contexts/ConnectionContext';
 import { LoaderProvider } from '../components/Loader';
 import { SPLTokenListProvider } from '../contexts/tokenList';
 import { WalletProvider } from '../contexts/WalletContext';
 import { AppLayout } from './Layout';
-
-import { About } from './About';
 import { Claim } from './Claim';
+import { About } from './About';
 
 export const App = () => {
   const muiDarkTheme = createTheme({
@@ -21,7 +19,7 @@ export const App = () => {
         main: '#d0bdf4',
       },
       secondary: {
-        main: '#8458B3',
+        main: 'rgb(114, 182, 207)',
       },
     },
   });
@@ -34,9 +32,10 @@ export const App = () => {
               <LoaderProvider>
                 <WalletProvider>
                   <AppLayout>
+                    <div></div>
                     <Switch>
-                      <Route exact path="/" component={About} />
                       <Route exact path="/claim" component={Claim} />
+                      <Route exact path="/" component={About} />
                     </Switch>
                   </AppLayout>
                 </WalletProvider>

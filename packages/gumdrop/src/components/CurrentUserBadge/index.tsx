@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-
 import { useWallet } from '@solana/wallet-adapter-react';
 import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { Button, Popover, Select, Tooltip } from 'antd';
 import Jazzicon from 'jazzicon';
 import { CopyOutlined } from '@ant-design/icons';
 import bs58 from 'bs58';
-
+import data from '../../urls/urls.json';
 import cogSvg from './cog.svg';
 import {
   ENDPOINTS,
@@ -151,9 +150,23 @@ export const CurrentUserBadge = (props: {
   if (unknownWallet.image) {
     image = <img src={unknownWallet.image} style={iconStyle} />;
   }
+  const address = publicKey?.toBase58();
 
   return (
     <div className="wallet-wrapper">
+      <div
+        className="URLS"
+        data-text=":( There's no claim available for this address. Check if you are using an eligible wallet for the current Gumdrop."
+      >
+        {data
+          .filter(item => item.handle === address)
+          .map(filtered => (
+            <a className="claim" href={filtered.url} key={filtered.handle}>
+              POPULATE THE CLAIM
+            </a>
+          ))}
+      </div>
+
       {props.showBalance && (
         <span>
           {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)} SOL

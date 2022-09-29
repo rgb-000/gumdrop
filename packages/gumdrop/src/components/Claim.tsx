@@ -1200,7 +1200,7 @@ export const Claim = (props: RouteComponentProps<ClaimProps>) => {
             wrap();
           }}
         >
-          Claim Gumdrop
+          Claim Your Pixels
         </Button>
         {loading && loadingProgress()}
       </Box>
@@ -1463,7 +1463,7 @@ export const Claim = (props: RouteComponentProps<ClaimProps>) => {
     </React.Fragment>
   );
 
-  const maxWidth = 960;
+  const maxWidth = 360;
   const { width } = useWindowDimensions();
 
   return (

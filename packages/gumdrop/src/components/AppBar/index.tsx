@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button, Modal } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { useWallet } from '@solana/wallet-adapter-react';
+import suns from './suns.gif';
 
 import closeSvg from './close.svg';
 import {
@@ -41,7 +42,7 @@ export function useWindowDimensions() {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <p className={'app-logo'}>GUMDROP</p>
+      <img className="app-logo" src={suns}></img>
     </Link>
   );
 };
@@ -273,13 +274,7 @@ export const AppBar = () => {
                   <Link to="/">{homeSvg(location.pathname === '/')}</Link>
                 </Button>
               </div>
-              <div className="wallet-wrapper">
-                <Button className="wallet-key">
-                  <Link to="/claim">
-                    {gumballsSvg(location.pathname === '/claim')}
-                  </Link>
-                </Button>
-              </div>
+              <div className="wallet-wrapper"></div>
               <Cog />
             </>
           )}

@@ -6,6 +6,8 @@
     "outDir": "./dist/",
     "downlevelIteration": true,
     "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "typeRoots": ["types", "../../types", "../../node_modules/@types"],
