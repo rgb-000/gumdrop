@@ -27,7 +27,18 @@
                   l.pathname.slice(0, -1) + decoded + l.hash
               );
             }
-          }(window.location))
+          }(window.location));
+
+          (function changeBackground() {
+        if (sessionStorage.getItem('colour')) {
+            document.body.style.backgroundColor = sessionStorage.getItem('colour');
+        }else{
+            document.body.style.backgroundColor =  "#BB0A21";
+            sessionStorage.setItem('colour', "#BB0A21");
+        }
+    })
+    changeBackground();
+
         </script>
     </head>
     <body>

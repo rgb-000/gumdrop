@@ -5,12 +5,8 @@ import {
   WalletContextState,
 } from '@solana/wallet-adapter-react';
 import {
-  getLedgerWallet,
-  getMathWallet,
   getPhantomWallet,
   getSolflareWallet,
-  getSolletWallet,
-  getSolongWallet,
 } from '@solana/wallet-adapter-wallets';
 import { Button } from 'antd';
 import React, {
@@ -147,17 +143,7 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 };
 
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const wallets = useMemo(
-    () => [
-      getPhantomWallet(),
-      getSolflareWallet(),
-      getLedgerWallet(),
-      getSolongWallet(),
-      getMathWallet(),
-      getSolletWallet(),
-    ],
-    [],
-  );
+  const wallets = useMemo(() => [getPhantomWallet(), getSolflareWallet()], []);
 
   const onError = useCallback((error: WalletError) => {
     console.error(error);
