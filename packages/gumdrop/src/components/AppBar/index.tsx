@@ -149,7 +149,13 @@ export const AppBar = () => {
     <>
       <MobileNavbar />
       <div id="desktop-navbar">
-        <div className="app-left">
+        <div
+          className="app-left"
+          onClick={e => {
+            e.preventDefault();
+            window.location.href = 'https://sunsstudio.com';
+          }}
+        >
           <LogoLink />
         </div>
         <div className="app-right">

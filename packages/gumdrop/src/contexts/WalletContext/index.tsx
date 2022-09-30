@@ -5,8 +5,12 @@ import {
   WalletContextState,
 } from '@solana/wallet-adapter-react';
 import {
+  getLedgerWallet,
+  getMathWallet,
   getPhantomWallet,
   getSolflareWallet,
+  getSolletWallet,
+  getSolongWallet,
 } from '@solana/wallet-adapter-wallets';
 import { Button } from 'antd';
 import React, {
@@ -49,7 +53,7 @@ export const WalletModal: FC = () => {
     <MetaplexModal title="Connect Wallet" visible={visible} onCancel={close}>
       <span
         style={{
-          color: '#fbb954',
+          color: 'rgb(114, 182, 207)',
           fontSize: '14px',
           lineHeight: '14px',
           fontFamily: 'GraphikWeb',
@@ -143,7 +147,17 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 };
 
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const wallets = useMemo(() => [getPhantomWallet(), getSolflareWallet()], []);
+  const wallets = useMemo(
+    () => [
+      getPhantomWallet(),
+      getSolflareWallet(),
+      getLedgerWallet(),
+      getSolongWallet(),
+      getMathWallet(),
+      getSolletWallet(),
+    ],
+    [],
+  );
 
   const onError = useCallback((error: WalletError) => {
     console.error(error);
