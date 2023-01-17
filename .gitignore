@@ -10,3 +10,5 @@ dist/
 .yarn
 *.css.map
 .log/
+.eslintcache
+.gitignore
