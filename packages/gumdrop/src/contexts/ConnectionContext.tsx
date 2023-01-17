@@ -36,7 +36,7 @@ export type Endpoint = {
 export const ENDPOINTS: Array<Endpoint> = [
   {
     name: 'mainnet-beta',
-    url: 'https://rpc.helius.xyz/?api-key=c4aa9929-2265-46b0-912d-18059b584173' /*'https://solana-mainnet.g.alchemy.com/v2/E9-cvJx_WVEzEsImZpwjJ5YbC7ICBroy' 'https://api.metaplex.solana.com'*/,
+    url: /*'https://rpc.helius.xyz/?api-key=c4aa9929-2265-46b0-912d-18059b584173'*/ 'https://solana-mainnet.g.alchemy.com/v2/E9-cvJx_WVEzEsImZpwjJ5YbC7ICBroy' /*'https://api.metaplex.solana.com'*/,
     chainId: ChainId.MainnetBeta,
   },
   {
