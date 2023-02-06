@@ -36,7 +36,7 @@ export type Endpoint = {
 export const ENDPOINTS: Array<Endpoint> = [
   {
     name: 'mainnet-beta',
-    url: 'https://solana-mainnet.g.alchemy.com/v2/E9-cvJx_WVEzEsImZpwjJ5YbC7ICBroy',
+    url: 'https://solana-mainnet.g.alchemy.com/v2/E9-cvJx_WVEzEsImZpwjJ5YbC7ICBroy' /***/,
     chainId: ChainId.MainnetBeta,
   },
   {

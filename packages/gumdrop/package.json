@@ -1,7 +1,7 @@
 {
   "name": "gumdrop",
   "version": "0.1.0",
-  "author": "Lawrence Wu <larry.wu@solana.com>",
+  "author": "Lawrence Wu",
   "license": "MIT",
   "scripts": {
     "build": "yarn run clean-dist && webpack --config=configs/webpack/prod.js && cp src/404.html dist",
